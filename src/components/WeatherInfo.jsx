@@ -1,6 +1,5 @@
-import { createContext, useState } from 'react';
 import WeatherIcon from './WeatherIcon.jsx';
-import { useWeather } from '../context/WeatherContext.jsx';
+
 import WeatherAlert from './WeatherAlert.jsx';
 
 export default function WeatherInfo({
