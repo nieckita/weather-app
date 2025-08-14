@@ -9,8 +9,6 @@ import WeatherForcast from './WeatherForcast.jsx';
 export default function SearchSection({ onSubmitSearch }) {
 	const [search, setSearch] = useState(getInitialSearch);
 
-	const [city, setCity] = useState('');
-	const [view, setView] = useState('idle');
 	const debouncedSearch = useDebouncedValue(search, 600);
 
 	pushSearchToUrl(debouncedSearch);

@@ -1,14 +1,16 @@
 import WeatherAlert from './WeatherAlert.jsx';
 import WeatherIcon from './WeatherIcon.jsx';
 import SearchSection from './SearchSection.jsx';
-import WeatherForcast from './WeatherForcast.jsx';
-import { useState } from 'react';
+
+import { useState, useMemo } from 'react';
 import WeatherLocal from './WeatherLocal.jsx';
 import WeatherCity from './WeatherCity.jsx';
+import { WeatherContext } from '../context/WeatherContext.jsx';
 
 export default function MainContent() {
 	const [view, setView] = useState('idle'); // 'idle' | 'city' | 'local'
 	const [city, setCity] = useState('');
+	const values = useMemo(() => ({ view, setView }), [view, setView]);
 
 	function handleSearchSubmit(value) {
 		const v = value.trim();
@@ -19,23 +21,23 @@ export default function MainContent() {
 			setView('local');
 		}
 	}
+
+	console.log(values);
+
 	return (
+		// <WeatherContext value={values}>
 		<div className="main-content ">
 			<SearchSection onSubmitSearch={handleSearchSubmit} />
 			<div className="weatherSection background-glass  content-display">
 				{view === 'local' && <WeatherLocal />}
-				{view === 'city' && <WeatherCity city={city} />}
+				{view === 'city' && <WeatherCity city={city} view={view} />}
 				{view === 'idle' && <WeatherLocal />}
 			</div>
-			<div className="weatherIcon background-glass content-display">
-				<WeatherIcon />
-			</div>
-			<div className="weatherAlert background-glass content-display">
-				<WeatherAlert />
-			</div>
+
 			<div className="weatherForcast background-glass content-display">
-				{view === 'city' && <WeatherForcast city={city} />}
+				{/* {view === 'city' && <WeatherForcast city={city} />} */}
 			</div>
 		</div>
+		// </WeatherContext>
 	);
 }

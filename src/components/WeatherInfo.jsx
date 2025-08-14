@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
+import WeatherIcon from './WeatherIcon.jsx';
+import { useWeather } from '../context/WeatherContext.jsx';
+import WeatherAlert from './WeatherAlert.jsx';
 
 export default function WeatherInfo({
 	id,
@@ -21,23 +24,37 @@ export default function WeatherInfo({
 		temp_max = cToF(temp_max);
 		temp_min = cToF(temp_min);
 		feels_like = cToF(feels_like);
-		console.log(unit);
 	}
+
 	return (
 		<div className="weather-info ">
-			<h4>{name}</h4>
-			<ul className="info-list lists">
-				<li className="temp">temp_max: {`${Math.round(temp_max)} ${unit}`}</li>
-				<li className="temp">temp_min: {`${Math.round(temp_min)} ${unit}`}</li>
-				<li className="feels_like">
-					feels_like: {`${Math.round(feels_like)} ${unit}`}
-				</li>
-				<li className="wind">wind: {`${Math.round(wind)} Km/h`}</li>
-				<li className="humidity">humidity: {humidity}</li>
-				<li className="desc">desc: {desc}</li>
-				<li className="sunset">sunset: {sunset}</li>
-				<li className="sunrise">sunrise: {sunrise}</li>
-			</ul>
+			<section className="info">
+				{' '}
+				<h4>{name}</h4>
+				<ul className="info-list lists">
+					<li className="temp">
+						temp_max: {`${Math.round(temp_max)} ${unit}`}
+					</li>
+					<li className="temp">
+						temp_min: {`${Math.round(temp_min)} ${unit}`}
+					</li>
+					<li className="feels_like">
+						feels_like: {`${Math.round(feels_like)} ${unit}`}
+					</li>
+					<li className="wind">wind: {`${Math.round(wind)} Km/h`}</li>
+					<li className="humidity">humidity: {humidity}</li>
+					<li className="desc">desc: {desc}</li>
+					<li className="sunset">sunset: {sunset}</li>
+					<li className="sunrise">sunrise: {sunrise}</li>
+				</ul>
+			</section>
+
+			<section className="icon">
+				<WeatherIcon iconId={iconId} />
+			</section>
+			<section className="alert">
+				<WeatherAlert />
+			</section>
 		</div>
 	);
 }

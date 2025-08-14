@@ -1,13 +1,12 @@
 .main-content {
 	display: grid;
 	grid-template-areas:
-		'searchSection searchSection searchSection'
-		'weatherSection weatherIcon weatherForcast'
-		'weatherSection weatherAlert weatherForcast';
+		'searchSection searchSection'
+		'weatherSection  weatherForcast'
+		'weatherSection weatherForcast';
 	grid-template-columns:
 		minmax(240px, 3fr)
-		minmax(200px, 1.5fr)
-		minmax(340px, 3fr);
+		minmax(340px, 2fr);
 	grid-template-rows:
 		auto
 		minmax(0, 1fr)
@@ -20,10 +19,7 @@
 }
 
 .weatherSection,
-.weatherIcon,
-.weatherForcast,
-.weatherAlert,
-.favoritsList {
+.weatherForcast {
 	min-width: 0;
 	min-height: 0;
 	overflow: auto;
@@ -47,17 +43,9 @@
 	align-items: center;
 	justify-content: flex-start;
 }
-.weatherIcon {
-	grid-area: weatherIcon;
-}
+
 .weatherForcast {
 	grid-area: weatherForcast;
-}
-.weatherAlert {
-	grid-area: weatherAlert;
-}
-.favoritsList {
-	grid-area: favoritsList;
 }
 
 /* Tablet */
@@ -65,18 +53,14 @@
 	.main-content {
 		grid-template-areas:
 			'weatherSection weatherSection'
-			'weatherIcon weatherAlert'
-			'weatherForcast weatherForcast'
-			'favoritsList favoritsList';
+			'weatherForcast weatherForcast';
+
 		grid-template-columns: 1fr 1fr;
 		gap: 0.5rem;
 		width: 100%;
 	}
 	.weatherSection,
-	.weatherIcon,
-	.weatherForcast,
-	.weatherAlert,
-	.favoritsList {
+	.weatherForcast {
 		min-width: 0;
 		min-height: 0;
 	}
@@ -87,19 +71,14 @@
 	.main-content {
 		grid-template-areas:
 			'weatherSection'
-			'weatherIcon'
-			'weatherAlert'
-			'weatherForcast'
-			'favoritsList';
-		grid-template-columns: 1fr;
+			'weatherForcast';
+
+		grid-template-columns: auto;
 		gap: 0.5rem;
 		width: 100%;
 	}
 	.weatherSection,
-	.weatherIcon,
-	.weatherForcast,
-	.weatherAlert,
-	.favoritsList {
+	.weatherForcast {
 		min-width: 0;
 		min-height: 0;
 	}

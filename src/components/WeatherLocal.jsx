@@ -4,9 +4,10 @@ import { fetchLocalweatherUrl } from '../fetchAPI.js';
 import WeatherInfo from './WeatherInfo.jsx';
 import { wait } from '../helpers.js';
 import { useEffect, useState } from 'react';
+import { useWeather } from '../context/WeatherContext.jsx';
 
 export default function WeatherLocal() {
-	const [coords, setCoords] = useState('');
+	const [coords, setCoords] = useState(null);
 	const [err, setErr] = useState(null);
 
 	useEffect(() => {
@@ -51,6 +52,7 @@ export default function WeatherLocal() {
 			sunrise: r.sys.sunrise,
 			timezone: r.timezone,
 			feels_like: r.main.feels_like,
+			iconId: r.weather?.[0]?.id,
 		}),
 	});
 
@@ -65,8 +67,6 @@ export default function WeatherLocal() {
 	if (isLoading) {
 		return <div>Loading...</div>;
 	}
-
-	console.log(localData);
 
 	return (
 		<div>
@@ -86,6 +86,7 @@ export default function WeatherLocal() {
 					sunrise={localData.sunrise}
 					timezone={localData.timezone}
 					feels_like={localData.feels_like}
+					iconId={localData.iconId}
 				/>
 			)}
 		</div>
@@ -104,7 +105,6 @@ async function fetchWeatherlocal({ queryKey }) {
 			lon: parseInt(lon),
 		},
 	});
-	console.log(results);
 
 	await wait(2000);
 	return results;
