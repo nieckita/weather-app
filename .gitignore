@@ -120,6 +120,6 @@ $RECYCLE.BIN/
 *.env
 !.env.example
 .cache/
-public/
+
 dist/
 
