@@ -16,3 +16,24 @@ export function getCurrentUrl() {
 export function getSearchParams() {
 	return new URLSearchParams(window.location.search);
 }
+
+export function localTimezoneOffset() {
+	const optionsUhr1 = {
+		hour: '2-digit',
+		minute: '2-digit',
+		hour12: false,
+	};
+	const now = new Date();
+	return now.toLocaleTimeString(navigator.language, optionsUhr1);
+}
+
+export function getDate() {
+	const optionsDatum = {
+		weekday: 'long',
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+	};
+	const now = new Date();
+	return now.toLocaleDateString(navigator.language, optionsDatum);
+}
