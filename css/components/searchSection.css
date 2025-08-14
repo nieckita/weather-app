@@ -1,0 +1,31 @@
+.searchSection {
+	display: grid;
+	grid-template-columns: minmax(200px, 1fr) clamp(80px, 20%, 150px);
+	gap: clamp(0.5rem, 2vw, 1rem);
+	align-items: center;
+	padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.searchInput {
+	min-width: 0;
+	width: 100%;
+	padding: 1rem;
+	outline: none;
+	border: none;
+}
+
+.searchBtn {
+	width: 100%;
+	padding: 1rem;
+	border: none;
+	cursor: pointer;
+}
+
+@media (max-width: 640px) {
+	.searchSection {
+		grid-template-columns: 1fr;
+	}
+	.searchBtn {
+		width: 100%;
+	}
+}

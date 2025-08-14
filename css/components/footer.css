@@ -1,0 +1,26 @@
+.site-footer {
+	box-shadow: 1px 1px 10px 2px #0000006a;
+	margin-top: 0.5rem;
+
+	/* From https://css.glass */
+	background: rgba(255, 255, 255, 0.07);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5.5px);
+	-webkit-backdrop-filter: blur(5.5px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: clamp(0.5rem, 2vw, 1rem);
+	min-width: 0;
+	min-height: 0;
+	p {
+		line-height: 1rem;
+		font-weight: 200;
+		color: var(--black);
+		text-align: center;
+		box-sizing: border-box;
+		padding-inline: clamp(0.3rem, 0vw, 0rem);
+		cursor: pointer;
+	}
+}

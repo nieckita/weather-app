@@ -1,0 +1,115 @@
+body {
+	overflow-x: hidden;
+	min-height: 100vh;
+	margin-top: 10px;
+}
+
+.site-wrapper {
+	display: flex;
+	flex-direction: column;
+	/*  https://ishadeed.com/article/new-viewport-units/ */
+	min-height: 80dvh;
+	background-color: var(--background-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: center center;
+}
+
+.container {
+	box-sizing: border-box;
+	display: grid;
+	width: 80vw;
+	min-height: 40dvh;
+	height: 50%;
+	grid-template-areas: 'site-header__topInfo' 'searchSection' 'site-content' 'site-footer';
+	grid-template-rows: 7rem 10px 1fr 3rem;
+
+	--content-padding: 1rem;
+}
+
+.site-header__topInfo {
+	grid-area: site-header__topInfo;
+
+	padding-block: var(--content-padding);
+}
+.searchSection {
+	grid-area: searchSection;
+	padding-block: var(--content-padding);
+}
+.site-content {
+	grid-area: site-content;
+
+	width: 100%;
+	margin-inline: auto;
+	place-items: center;
+}
+
+.site-footer {
+	grid-area: site-footer;
+	gap: 1rem;
+	/* border: 1px solid; */
+	padding-block: var(--content-padding);
+}
+
+/* Hilfsklassen für einheitliches Layout. */
+
+/* .content-padding {
+	padding-inline: var(--content-padding);
+} */
+.content-display {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	min-height: 0;
+	min-width: 0;
+	/* background: green; */
+}
+.content-width {
+	margin-inline: auto;
+	width: 100%;
+
+	&:where(.content-width--s) {
+		max-width: var(--max-width-s);
+	}
+
+	&:where(.content-width--m) {
+		max-width: var(--max-width-m);
+	}
+
+	&:where(.content-width--l) {
+		max-width: var(--max-width-l);
+	}
+}
+
+/* Klassen für Elemente, die aus ihrem Container ausbrechen sollen,
+z.B. über die volle Breite der Seite. Geeignet für ein einspaltiges
+Layout mit in der Mitte zentriertem und in der Breite begrenztem
+Hauptinhalt. */
+
+.custom-width {
+	width: 100vw;
+	translate: -50%;
+	margin-inline-start: 50%;
+
+	&:where(.custom-width--s) {
+		max-width: var(--max-width-s);
+	}
+
+	&:where(.custom-width--m) {
+		max-width: var(--max-width-m);
+	}
+
+	&:where(.custom-width--l) {
+		max-width: var(--max-width-l);
+	}
+
+	&:where(.custom-width--xl) {
+		max-width: var(--max-width-xl);
+	}
+
+	&:where(.custom-width--full) {
+		max-width: 100vi;
+	}
+}

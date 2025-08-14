@@ -1,0 +1,11 @@
+/* Komponenten */
+@import 'backgroundLive.css';
+@import 'header.css';
+@import 'topinfo.css';
+@import 'searchSection.css';
+@import 'mainContent.css';
+@import 'footer.css';
+@import 'weatherIcon.css';
+@import 'weatherAlert.css';
+@import 'favoritsList.css';
+@import 'weatherForcast.css';
