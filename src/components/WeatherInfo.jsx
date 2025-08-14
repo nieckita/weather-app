@@ -18,6 +18,7 @@ export default function WeatherInfo({
 	sunrise,
 	timezone,
 	feels_like,
+	iconId,
 }) {
 	const unit = localStorage.getItem('unit');
 	if (unit !== 'C°') {
