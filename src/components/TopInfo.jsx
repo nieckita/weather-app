@@ -1,14 +1,20 @@
 import { useState } from 'react';
+import { localTimezoneOffset, getDate } from '../helpers.js';
 export default function TopInfo() {
 	const [unit, setunit] = useState('C°');
 
 	localStorage.setItem('unit', unit);
 
+	const localTime = localTimezoneOffset();
+	const datum = getDate();
+
 	return (
 		<>
 			<section className="dateInfo content-display">
-				<span className="date">date</span>
-				<span className="local-time">local time</span>
+				<span className="date">
+					<p>{datum}</p>
+				</span>
+				<span className="local-time">{localTime}</span>
 				<span className="city-time">city time</span>
 			</section>
 			<section className="settingBtn ">
