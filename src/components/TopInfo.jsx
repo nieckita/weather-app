@@ -1,7 +1,13 @@
 import { useState } from 'react';
-import { localTimezoneOffset, getDate, getCityTime } from '../helpers.js';
+import { localTimezoneOffset, getDate } from '../helpers.js';
 import { useEffect } from 'react';
 import { useWeather } from '../context/WeatherContext.jsx';
+/**
+ * TopInfo component displays the current date, local time, and city time. It also
+ * allows the user to toggle between Celsius and Fahrenheit temperature units.
+ *
+ * @return {JSX.Element} The rendered TopInfo component.
+ */
 export default function TopInfo() {
 	const { cityTime } = useWeather();
 	const [unit, setunit] = useState('C°');
