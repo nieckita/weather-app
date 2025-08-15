@@ -1,10 +1,8 @@
 import SearchSection from './SearchSection.jsx';
-
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import WeatherLocal from './WeatherLocal.jsx';
 import WeatherCity from './WeatherCity.jsx';
 import WeatherForcast from './WeatherForcast.jsx';
-import { WeatherContext } from '../context/WeatherContext.jsx';
 
 export default function MainContent() {
 	const [view, setView] = useState('idle'); // 'idle' | 'city' | 'local'
