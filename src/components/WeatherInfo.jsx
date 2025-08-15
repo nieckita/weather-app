@@ -37,11 +37,12 @@ export default function WeatherInfo({
 	feels_like,
 	iconId,
 }) {
-	const { setLat, setLon, setTimeZone, setCity, setcityTime } = useWeather();
+	const { setLat, setLon, setTimeZone, setCity, setcityTime, setUnit, unit } =
+		useWeather();
 
 	const cityTime = getCityTime(timezone);
+	console.log(unit);
 
-	const unit = localStorage.getItem('unit');
 	if (unit !== 'C°') {
 		temp_max = cToF(temp_max);
 		temp_min = cToF(temp_min);
