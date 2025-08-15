@@ -9,7 +9,6 @@ import { WeatherContext } from '../context/WeatherContext.jsx';
 export default function MainContent() {
 	const [view, setView] = useState('idle'); // 'idle' | 'city' | 'local'
 	const [city, setCity] = useState('');
-	const values = useMemo(() => ({ view, setView }), [view, setView]);
 
 	function handleSearchSubmit(value) {
 		const v = value.trim();
@@ -22,19 +21,17 @@ export default function MainContent() {
 	}
 
 	return (
-		<WeatherContext value={values}>
-			<div className="main-content ">
-				<SearchSection onSubmitSearch={handleSearchSubmit} />
-				<div className="weatherSection background-glass  content-display">
-					{view === 'local' && <WeatherLocal />}
-					{view === 'city' && <WeatherCity city={city} view={view} />}
-					{view === 'idle' && <WeatherLocal />}
-				</div>
-
-				<div className="weatherForcast background-glass content-display">
-					{/* {view === 'city' && <WeatherForcast city={city} />} */}
-				</div>
+		<div className="main-content ">
+			<SearchSection onSubmitSearch={handleSearchSubmit} />
+			<div className="weatherSection background-glass  content-display">
+				{view === 'local' && <WeatherLocal />}
+				{view === 'city' && <WeatherCity city={city} view={view} />}
+				{view === 'idle' && <WeatherLocal />}
 			</div>
-		</WeatherContext>
+
+			<div className="weatherForcast background-glass content-display">
+				{/* {view === 'city' && <WeatherForcast city={city} />} */}
+			</div>
+		</div>
 	);
 }
