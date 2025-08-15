@@ -5,8 +5,7 @@
 		'info alert';
 	grid-template-columns: 1fr 1fr;
 
-	/* ارتفاع ثابت برای سطر alert */
-	--alert-row-h: 50px; /* هرچی می‌خوای */
+	--alert-row-h: 50px;
 	grid-template-rows: 1fr var(--alert-row-h);
 
 	align-items: center;
