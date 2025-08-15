@@ -4,10 +4,9 @@ import { fetchLocalweatherUrl } from '../fetchAPI.js';
 import WeatherInfo from './WeatherInfo.jsx';
 import { wait } from '../helpers.js';
 import { useEffect, useState } from 'react';
-import { useWeather } from '../context/WeatherContext.jsx';
 
 export default function WeatherLocal() {
-	const [coords, setCoords] = useState(null);
+	const [coords, setCoords] = useState('');
 	const [err, setErr] = useState(null);
 
 	useEffect(() => {

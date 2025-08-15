@@ -1,10 +1,14 @@
 import Layout from './components/Layout.jsx';
 import MainContent from './components/MainContent.jsx';
-
+import { WeatherProvider } from './context/WeatherContext.jsx';
 export default function App() {
 	return (
-		<Layout>
-			<MainContent />
-		</Layout>
+		<>
+			<WeatherProvider>
+				<Layout>
+					<MainContent />
+				</Layout>
+			</WeatherProvider>
+		</>
 	);
 }

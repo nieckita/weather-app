@@ -1,6 +1,8 @@
 import WeatherIcon from './WeatherIcon.jsx';
 
 import WeatherAlert from './WeatherAlert.jsx';
+import { useWeather } from '../context/WeatherContext.jsx';
+import { useEffect } from 'react';
 
 export default function WeatherInfo({
 	id,
@@ -12,19 +14,35 @@ export default function WeatherInfo({
 	lon,
 	lat,
 	desc,
-	cod,
-	sunset,
-	sunrise,
 	timezone,
 	feels_like,
 	iconId,
 }) {
+	const { setLat, setLon, setTimeZone, setCity } = useWeather();
+	const ctx = useWeather();
+
+	console.log(setLat, setLon, setTimeZone, setCity);
+
+	console.log('types:', {
+		setLat: typeof ctx.setLat,
+		setLon: typeof ctx.setLon,
+		setTimeZone: typeof ctx.setTimeZone,
+		setCity: typeof ctx.setCity,
+	});
+
 	const unit = localStorage.getItem('unit');
 	if (unit !== 'C°') {
 		temp_max = cToF(temp_max);
 		temp_min = cToF(temp_min);
 		feels_like = cToF(feels_like);
 	}
+
+	useEffect(() => {
+		if (lat != null) setLat(lat);
+		if (lon != null) setLon(Number(lon));
+		if (name) setCity(name);
+		if (timezone) setTimeZone(timezone);
+	}, [lat, lon, name, timezone, setLat, setLon, setCity, setTimeZone]);
 
 	return (
 		<div className="weather-info ">
@@ -44,8 +62,6 @@ export default function WeatherInfo({
 					<li className="wind">wind: {`${Math.round(wind)} Km/h`}</li>
 					<li className="humidity">humidity: {humidity}</li>
 					<li className="desc">desc: {desc}</li>
-					<li className="sunset">sunset: {sunset}</li>
-					<li className="sunrise">sunrise: {sunrise}</li>
 				</ul>
 			</section>
 
@@ -53,7 +69,7 @@ export default function WeatherInfo({
 				<WeatherIcon iconId={iconId} />
 			</section>
 			<section className="alert">
-				<WeatherAlert />
+				<WeatherAlert max={temp_max} wind={wind} />
 			</section>
 		</div>
 	);

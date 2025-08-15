@@ -24,10 +24,10 @@ export default function WeatherCity({ city }) {
 			lat: r.coord.lat,
 			desc: r.weather?.[0]?.description,
 			cod: r.cod,
-			sunset: r.sys.sunset,
-			sunrise: r.sys.sunrise,
+
 			timezone: r.timezone,
 			feels_like: r.main.feels_like,
+			iconId: r.weather?.[0]?.id,
 		}),
 	});
 
@@ -57,10 +57,9 @@ export default function WeatherCity({ city }) {
 					lat={cityData.lat}
 					desc={cityData.desc}
 					cod={cityData.cod}
-					sunset={cityData.sunset}
-					sunrise={cityData.sunrise}
 					timezone={cityData.timezone}
 					feels_like={cityData.feels_like}
+					iconId={cityData.iconId}
 				/>
 			)}
 		</div>

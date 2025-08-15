@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { localTimezoneOffset, getDate } from '../helpers.js';
+import { localTimezoneOffset, getDate, getCityTime } from '../helpers.js';
 import { useEffect } from 'react';
+import { useWeather } from '../context/WeatherContext.jsx';
 export default function TopInfo() {
+	const { timezone } = useWeather();
 	const [unit, setunit] = useState('C°');
 	useEffect(() => {
 		setunit(unit);
@@ -9,6 +11,7 @@ export default function TopInfo() {
 	localStorage.setItem('unit', unit);
 
 	const localTime = localTimezoneOffset();
+	const cityTime = getCityTime(timezone);
 	const datum = getDate();
 
 	return (
@@ -18,7 +21,7 @@ export default function TopInfo() {
 					<p>{datum}</p>
 				</span>
 				<span className="local-time">{localTime}</span>
-				<span className="city-time">city time</span>
+				<span className="city-time">{cityTime}</span>
 			</section>
 			<section className="settingBtn ">
 				<section className="temperature">

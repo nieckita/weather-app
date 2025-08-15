@@ -37,3 +37,13 @@ export function getDate() {
 	const now = new Date();
 	return now.toLocaleDateString(navigator.language, optionsDatum);
 }
+
+export function getCityTime(timezone) {
+	if (!timezone) return '—';
+
+	return new Date().toLocaleTimeString('en-GB', {
+		hour: '2-digit',
+		minute: '2-digit',
+		timeZone: timezone,
+	});
+}
