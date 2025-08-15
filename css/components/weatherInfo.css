@@ -62,7 +62,7 @@
 	white-space: wrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	margin-top: -9rem;
+	margin-top: 0rem;
 	margin-left: 30px;
 }
 .alert p {
