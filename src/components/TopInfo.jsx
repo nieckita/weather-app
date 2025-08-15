@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { localTimezoneOffset, getDate } from '../helpers.js';
 import { useEffect } from 'react';
 import { useWeather } from '../context/WeatherContext.jsx';
@@ -10,7 +9,7 @@ import { useWeather } from '../context/WeatherContext.jsx';
  */
 export default function TopInfo() {
 	const { cityTime, unit, setUnit } = useWeather();
-	// const [unit, setunit] = useState('C°');
+
 	useEffect(() => {
 		setUnit(unit);
 	}, [unit]);
@@ -35,7 +34,7 @@ export default function TopInfo() {
 						aria-pressed={unit === 'C°' ? 'true' : 'false'}
 						onClick={() => setUnit('C°')}
 					>
-						F°
+						C°
 					</button>
 					<button
 						className="temp-btn temperature-farenhite"
@@ -44,7 +43,7 @@ export default function TopInfo() {
 							setUnit('F°');
 						}}
 					>
-						C°
+						F°
 					</button>
 				</section>
 			</section>
