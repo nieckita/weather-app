@@ -1,4 +1,4 @@
-/* ===== TopInfo: دو ستون، چپ بزرگ‌تر ===== */
+/* ===== TopInfo: 2 columns, left bigger ===== */
 .top-info {
 	box-sizing: border-box;
 	display: grid;
@@ -8,11 +8,10 @@
 	padding-inline: 1rem;
 	align-items: center;
 
-	/* برای Container Query */
+	/* For Container Query */
 	container-type: inline-size;
 }
 
-/* اجازه بده آیتم‌ها در ستون‌ها جمع/گسترش پیدا کنن */
 .top-info > * {
 	min-width: 0;
 }
@@ -47,7 +46,6 @@
 	align-items: center;
 }
 
-/* وقتی عرض خودِ container (یعنی .top-info) کم شد */
 @container (width <= 900px) {
 	.dateInfo {
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -89,12 +87,12 @@
 	cursor: pointer;
 }
 
-/* حالت passive (غیرفعال) */
+/*  passive */
 .temperature .temp-btn[aria-pressed='false'] {
 	opacity: 0.8;
 }
 
-/* حالت active */
+/*  active */
 .temperature .temp-btn[aria-pressed='true'] {
 	transform: scale(1.1);
 	opacity: 1;
@@ -117,7 +115,7 @@
 	align-items: center;
 }
 
-/* ===== تبلت (Fallback بر پایه viewport) ===== */
+/* ===== Media (Fallback for viewport) ===== */
 @media (max-width: 1000px) {
 	.top-info {
 		grid-template-areas: 'dateInfo settingBtn';
@@ -141,7 +139,7 @@
 	}
 }
 
-/* ===== موبایل ===== */
+/* ===== Media ===== */
 @media (max-width: 810px) {
 	.top-info {
 		grid-template-areas:
