@@ -1,14 +1,25 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { WeatherContext } from './WeatherContext.jsx';
 export default function WeatherProvider({ children }) {
 	const [lat, setLat] = useState(null);
 	const [lon, setLon] = useState(null);
 	const [city, setCity] = useState('');
 	const [timeZone, setTimeZone] = useState('UTC');
-	const [unit, setUnit] = useState('C°');
 	const [cityTime, setcityTime] = useState(null);
 
-	localStorage.setItem('unit', unit);
+	const [unit, setUnit] = useState(() => localStorage.getItem('unit') || 'C°');
+
+	useEffect(() => {
+		localStorage.setItem('unit', unit);
+	}, [unit]);
+
+	useEffect(() => {
+		const onStorage = (e) => {
+			if (e.key === 'unit' && e.newValue) setUnit(e.newValue);
+		};
+		window.addEventListener('storage', onStorage);
+		return () => window.removeEventListener('storage', onStorage);
+	}, []);
 
 	const value = useMemo(
 		() => ({
