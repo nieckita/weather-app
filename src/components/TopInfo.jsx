@@ -9,12 +9,11 @@ import { useWeather } from '../context/WeatherContext.jsx';
  * @return {JSX.Element} The rendered TopInfo component.
  */
 export default function TopInfo() {
-	const { cityTime } = useWeather();
-	const [unit, setunit] = useState('C°');
+	const { cityTime, unit, setUnit } = useWeather();
+	// const [unit, setunit] = useState('C°');
 	useEffect(() => {
-		setunit(unit);
+		setUnit(unit);
 	}, [unit]);
-	localStorage.setItem('unit', unit);
 
 	const localTime = localTimezoneOffset();
 
@@ -34,18 +33,18 @@ export default function TopInfo() {
 					<button
 						className="temp-btn temperature-celcius"
 						aria-pressed={unit === 'C°' ? 'true' : 'false'}
-						onClick={() => setunit('C°')}
+						onClick={() => setUnit('C°')}
 					>
-						C°
+						F°
 					</button>
 					<button
 						className="temp-btn temperature-farenhite"
 						aria-pressed={unit === 'F°' ? 'true' : 'false'}
 						onClick={() => {
-							setunit('F°');
+							setUnit('F°');
 						}}
 					>
-						F°
+						C°
 					</button>
 				</section>
 			</section>
