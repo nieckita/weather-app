@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { WeatherContext } from './WeatherContext.jsx';
-export function WeatherProvider({ children }) {
+export default function WeatherProvider({ children }) {
 	const [lat, setLat] = useState(null);
 	const [lon, setLon] = useState(null);
 	const [city, setCity] = useState('');
