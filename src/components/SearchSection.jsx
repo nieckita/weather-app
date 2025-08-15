@@ -6,6 +6,11 @@ import WeatherLocal from './WeatherLocal.jsx';
 import WeatherCity from './WeatherCity.jsx';
 import WeatherForcast from './WeatherForcast.jsx';
 
+/**
+ * SearchSection component.
+ * @param {Function} onSubmitSearch - Callback to be called when search is submitted.
+ * @returns {JSX.Element} - The rendered SearchSection component.
+ */
 export default function SearchSection({ onSubmitSearch }) {
 	const [search, setSearch] = useState(getInitialSearch);
 
@@ -36,6 +41,11 @@ export default function SearchSection({ onSubmitSearch }) {
 	);
 }
 
+/**
+ * Pushes the given search value to the URL as a search parameter.
+ * If the value is falsy, deletes the 'search' parameter from the URL.
+ * @param {string} value - The search value to be pushed to the URL.
+ */
 function pushSearchToUrl(value) {
 	const url = getCurrentUrl();
 	if (!value) url.searchParams.delete('search');
@@ -43,6 +53,12 @@ function pushSearchToUrl(value) {
 	window.history.replaceState({}, '', url);
 }
 
+/**
+ * Retrieves the initial search value from the URL.
+ * If the 'search' parameter is present in the URL, returns its value.
+ * Otherwise, returns an empty string.
+ * @return {string} The initial search value.
+ */
 function getInitialSearch() {
 	const url = getCurrentUrl();
 	return url.searchParams.get('search') ?? '';
