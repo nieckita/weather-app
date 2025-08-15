@@ -5,10 +5,27 @@ export default function WeatherProvider({ children }) {
 	const [lon, setLon] = useState(null);
 	const [city, setCity] = useState('');
 	const [timeZone, setTimeZone] = useState('UTC');
+	const [unit, setUnit] = useState('C°');
+	const [cityTime, setcityTime] = useState(null);
+
+	localStorage.setItem('unit', unit);
 
 	const value = useMemo(
-		() => ({ lat, setLat, lon, setLon, city, setCity, timeZone, setTimeZone }),
-		[lat, lon, city, timeZone]
+		() => ({
+			lat,
+			setLat,
+			lon,
+			setLon,
+			city,
+			setCity,
+			timeZone,
+			setTimeZone,
+			unit,
+			setUnit,
+			cityTime,
+			setcityTime,
+		}),
+		[lat, lon, city, timeZone, unit, cityTime]
 	);
 
 	return <WeatherContext value={value}>{children}</WeatherContext>;
