@@ -38,12 +38,31 @@ export function getDate() {
 	return now.toLocaleDateString(navigator.language, optionsDatum);
 }
 
-export function getCityTime(timezone) {
-	if (!timezone) return '—';
+export function getCityTime(tz) {
+	if (!tz && tz !== 0) return '—';
 
-	return new Date().toLocaleTimeString('en-GB', {
+	if (typeof tz === 'string') {
+		try {
+			return new Date().toLocaleTimeString('en-GB', {
+				hour: '2-digit',
+				minute: '2-digit',
+				timeZone: tz,
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
+	const offsetSec = Number(tz);
+	if (!Number.isFinite(offsetSec)) return '—';
+
+	const now = new Date();
+	const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+	const cityMs = utcMs + offsetSec * 1000;
+	const cityDate = new Date(cityMs);
+
+	return cityDate.toLocaleTimeString('en-GB', {
 		hour: '2-digit',
 		minute: '2-digit',
-		timeZone: timezone,
 	});
 }
