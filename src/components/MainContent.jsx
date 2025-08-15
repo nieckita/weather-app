@@ -30,7 +30,7 @@ export default function MainContent() {
 			</div>
 
 			<div className="weatherForcast background-glass content-display">
-				{/* {view === 'city' && <WeatherForcast city={city} />} */}
+				<WeatherForcast />
 			</div>
 		</div>
 	);
