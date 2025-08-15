@@ -20,7 +20,7 @@ export default function TopInfo() {
 
 	return (
 		<>
-			<section className="dateInfo content-display">
+			<section className="dateInfo ">
 				<span className="date">
 					<p>{datum}</p>
 				</span>
