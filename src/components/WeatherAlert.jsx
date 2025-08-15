@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 
 export default function WeatherAlert({ max, wind }) {
-	// اگر خواستی از min هم استفاده کنی، می‌تونی تو پیام‌ها دخیلش کنی.
 	const { temp, windMsg, severity } = useMemo(
 		() => warnungGenerate(max, wind),
 		[max, wind]
